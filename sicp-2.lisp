@@ -1,0 +1,10 @@
+(defun memq (item x)
+  (cond ((null x) nil)
+	((eql item (car x)) x)
+	(t (memq item (cdr x)))))
+
+(defun equal? (a b)
+  (cond ((and (symbolp a) (symbolp b)) (eql a b))
+	((and (consp a) (consp b))
+	 (and (equal? (car a) (car b)) (equal? (cdr a) (cdr b))))
+	(t nil)))
